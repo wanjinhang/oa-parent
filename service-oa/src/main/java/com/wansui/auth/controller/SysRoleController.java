@@ -10,9 +10,9 @@ import com.wansui.vo.system.SysRoleQueryVo;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.util.StringUtils;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,6 +23,7 @@ import java.util.List;
  * @author wansui
  * @date 2023/11/16
  */
+@SuppressWarnings("ALL")
 @Slf4j
 @Tag(name = "角色管理", description = "角色管理")
 @RestController
@@ -36,7 +37,7 @@ public class SysRoleController {
         this.sysRoleService = sysRoleService;
     }
 
-    @Operation(tags = "获取全部角色列表")
+    @Operation(summary  = "获取全部角色列表")
     @GetMapping("findAll")
     public Result<List<SysRole>> findAll() {
         List<SysRole> roleList = sysRoleService.list();
@@ -54,7 +55,7 @@ public class SysRoleController {
      * @date 2023/11/16
      *///条件分页查询
 
-    @Operation(tags="条件分页查询")
+    @Operation(summary ="条件分页查询")
     @GetMapping("{page}/{limit}")
     public Result pageQueryRole(@PathVariable Long page,
                                 @PathVariable Long limit,
@@ -78,4 +79,45 @@ public class SysRoleController {
         return Result.ok(pageModel);
     }
 
+   @Operation(summary  = "获取")
+    @GetMapping("get/{id}")
+    public Result get(@PathVariable Long id) {
+        SysRole role = sysRoleService.getById(id);
+        return Result.ok(role);
+    }
+
+   @Operation(summary  = "新增角色")
+    @PostMapping("save")
+    public Result save(@RequestBody @Validated SysRole role) {
+        sysRoleService.save(role);
+        return Result.ok();
+    }
+
+   @Operation(summary  = "修改角色")
+    @PutMapping("update")
+    public Result updateById(@RequestBody SysRole role) {
+        sysRoleService.updateById(role);
+        return Result.ok();
+    }
+
+   @Operation(summary  = "删除角色")
+    @DeleteMapping("remove/{id}")
+    public Result remove(@PathVariable Long id) {
+        sysRoleService.removeById(id);
+        return Result.ok();
+    }
+
+    @Operation(summary  = "根据id列表删除")
+    @DeleteMapping("batchRemove")
+    public Result batchRemove(@RequestBody List<Long> idList) {
+        sysRoleService.removeByIds(idList);
+        return Result.ok();
+    }
+
+    @Operation(summary  = "测试")
+    @GetMapping("test")
+    public Result test() {
+       int i = 1/0;
+       return Result.ok();
+    }
 }
