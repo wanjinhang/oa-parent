@@ -1,7 +1,7 @@
 package com.wansui.auth.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.wansui.auth.pojo.SysUserRole;
+import com.wansui.model.system.SysUserRole;
 import com.wansui.auth.service.SysUserRoleService;
 import com.wansui.auth.mapper.SysUserRoleMapper;
 import org.springframework.stereotype.Service;

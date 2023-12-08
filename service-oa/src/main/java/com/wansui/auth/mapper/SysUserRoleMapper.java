@@ -1,6 +1,6 @@
 package com.wansui.auth.mapper;
 
-import com.wansui.auth.pojo.SysUserRole;
+import com.wansui.model.system.SysUserRole;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

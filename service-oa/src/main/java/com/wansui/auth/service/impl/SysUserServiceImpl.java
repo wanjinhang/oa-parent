@@ -1,7 +1,7 @@
 package com.wansui.auth.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.wansui.auth.pojo.SysUser;
+import com.wansui.model.system.SysUser;
 import com.wansui.auth.service.SysUserService;
 import com.wansui.auth.mapper.SysUserMapper;
 import org.springframework.stereotype.Service;

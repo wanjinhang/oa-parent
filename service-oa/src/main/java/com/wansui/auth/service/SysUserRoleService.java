@@ -1,6 +1,6 @@
 package com.wansui.auth.service;
 
-import com.wansui.auth.pojo.SysUserRole;
+import com.wansui.model.system.SysUserRole;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
